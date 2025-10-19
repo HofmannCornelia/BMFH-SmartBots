@@ -2,17 +2,24 @@
 Wilkommen zum SmartBots Kurs! 
 Hier findest du alle nötigen Materialien und Informationen.
 
-Wir werden einen Roboter programmieren, der seine Umgebung mit Ultraschall-Sensor erkundet, und dabei Hindernisse vermeidet. 
-Das Gehirn des Roboters ist ein Arduino Uno kompatibles Board, ein Mini-Computer.
+<img src="https://github.com/user-attachments/assets/1b346462-beb1-49cc-ab60-91691d24b1fa" alt="Beispiel-Bild unserer Roboter" style="width:40%; height:auto;">
+<!--  <img src="https://www.roboter-bausatz.de/media/image/54/74/8d/RBS12948_2.jpg" alt="Beispiel-Bild unserer Roboter" style="width:40%; height:auto;">  -->
+
+Wir werden einen Roboter programmieren, der seine Umgebung mit Ultraschall-Sensor erkundet, und dabei Hindernissen ausweichen. 
+Das "Gehirn" des Roboters ist ein Arduino Uno kompatibles Board, ein Mini-Computer. 
+<img src="https://github.com/user-attachments/assets/d30bc181-4193-483d-84af-425f1661ea91" alt="Arduino Uno Board" style="width:40%; height:auto;">
+
+
+Von alleine ist dieser Roboter allerdings noch nicht "smart", dafür müssen wir noch einiges Programmieren.
 
 ## notwendige Vorbereitungen
 
 ### Umgebung einrichten
-Damit wir unseren Roboter programmieren können, brauchen wir die "**Arduino IDE**"
+- Damit wir unseren Roboter programmieren können, brauchen wir die "**Arduino IDE**"
 Du kannst hier die [Version 2.3.6 herunterladen](https://www.arduino.cc/en/software/) 
 und dann bei dir installieren.
 
-Ausserdem brauchen wir noch einen **Treiber**, dass der Laptop mit dem Board kommunizieren kann, und zwar den Chip-Treiber CH241Ser:  
+- Ausserdem brauchen wir noch einen **Treiber**, dass der Laptop mit dem Board kommunizieren kann, und zwar den Chip-Treiber CH241Ser:  
 [für Windows](https://www.roboter-bausatz.de/media/archive/c8/f8/8a/Treiber_CH341SER.zip)
 [für MacOS](https://www.roboter-bausatz.de/media/archive/ec/a7/f0/CH341SER_MAC.zip)
 [für Linux](https://www.roboter-bausatz.de/media/archive/13/f8/02/CH341SER_LINUX.zip)  
@@ -20,13 +27,69 @@ Auch hier solltest du die passende Treiberversion herunterladen, und das .zip en
 Für Windows: `Treiber_CH241Ser/CH241Ser/Setup.exe` ausführen.  
 Für MacOS: `CH241Ser/CH34x_Install_V1.5.pkg` ausführen
 
-Danach muss der Laptop **neu gestartet** werden.
+- Danach muss der Laptop **neu gestartet** werden.
 
-### Arduino IDE basics
+### Arduino Uno Board und IDE basics
+> [!NOTE]
+> Du lernst, wie das Arduino Board funktioniert und wie du den Arduino zum Blinken bringst.
+
+#### Aufgabe 1
+
+Auf dem Arduino Board gibt es eine **L LED**, die für eigene Zwecke eingesetzt werden kann. Das Sensor-Shield auf dem Arduino kopiert den Status auf seiner eigenen **L LED**. 
+Genau diese LEDs bringen wir jetzt im von uns gewählten Rhythmus zum Blinken. Die LED ist mit dem digitalen Pin Nummer 13 verbunden. 
+
+Der Arduino arbeitet immer genau ein Programm ab. Solche Programme werden Sketch genannt, manchmal auch Code. 
+
+Du schreibst und änderst einen Sketch auf dem Laptop mit einer Software, die **Arduino IDE** heisst (Integrated Development Environment, integrierte Entwicklungsumgebung). Wir nennen sie einfach IDE. 
+
+Starte die Arduino IDE, und speichere ein neues Sketch: "Blink".
+```
+// Die setup Funktion wird einmal aufgerufen, 
+// wenn du den Arduino anstellst oder Reset drückst: 
+
+void setup() { 
+  // Initialisiere den digitalen Pin 13 als Output. 
+  pinMode(13, OUTPUT); 
+} 
+
+ 
+
+// Die loop Funktion wird wieder und wieder aufgerufen. 
+
+void loop() {
+
+  // Schalte die LED an. (HIGH ist der Spannungspegel.) 
+  digitalWrite(13, HIGH); 
+
+  // Warte 1000 Milisekunden = 1 Sekunde 
+  delay(1000); 
+
+  // Schalte die LED ab, indem die Spannung auf LOW gesetzt wird. 
+  digitalWrite(13, LOW); 
+
+  // Warte wieder 1 Sekunde. 
+  delay(1000);
+```
+Kannst du verstehen, welche Anweisungen der Code Schritt für Schritt gibt?
+
+Wir werden diesen Code gleich bearbeiten. Verbinde zuerst dein Arduino via USB-Kabel mit dem Laptop. 
+Kontrolliere immer, dass dein aktuelles Arduino Board richtig gewählt ist:  
+Im "Board" Dropdown sollte "Arduino Uno" in Fett geschrieben sein, wenn die Verbindung steht. Falls dort nur etwas ähnliches wie `unknown, COM4` steht, kannst du
+- im Dropdown auf XXX klicken
+- rechts den für dich gelisteten `COM` port auswählen
+- links nach `Arduino Uno` suchen und auswählen
+- bestätigen
+
+Überprüfe deinen Sketch mit der ✔️-Taste und lade ihn auf das Board hoch mit der ➡️-Taste. Beobachte was mit dem LED Licht passiert. 
+
+#### Aufgabe 2
+Im Morsealphabet werden Buchstaben als eine Kombination von langen und kurzen Signalen übertragen. Bringe deinem Arduino bei, das berühmte Notsignal SOS zu senden. Das SOS Signal besteht aus 3 kurzen Signalen (dem S), 3 langen Signalen (dem O) und wieder 3 kurzen Signalen.  
+![SOS](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/SOS.svg/330px-SOS.svg.png)
+
+Ändere den Sketch so ab, dass die LED das SOS Signal wiedergibt. Probiere verschiedene Blink-Dauern und Wartezeiten zwischen Signalen aus.
 
 ## Schrittweiser Aufbau des Codes
 
-### Blink SOS
 
 ### ACHTUNG!
 Im nächsten Schritt nehmen wir die Motoren bin Betrieb. Dafür benötigen wir etwas mehr Energie, als wir über USB von Laptops typischerweise kriegen. Darum ist das Batteriefach mit 4 AA Batterien vorbereitet.
@@ -44,3 +107,7 @@ Also entweder die USB Verbindung zum Laptop, ODER die Batterien, nie bedes gleic
 ### Distanz messen mit Ultraschall
 
 ### alles zusammensetzen
+
+## References
+- [Roboter Bausatz](https://www.roboter-bausatz.de/p/bausatz-2wd-roboter-smart-car-arduino-kit): Grundausstattung & Bau-Hinweise
+- Dieser BMFH Kurs ist adaptiert vom ScienceWeek Kurs "SmartBots",  ursprünglich Entwickelt von Jamal Hanafi und Lukas Hollenstein, ergänzt durch Cornelia Hofmann.

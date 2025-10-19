@@ -69,6 +69,7 @@ void loop() {
 
   // Warte wieder 1 Sekunde. 
   delay(1000);
+}
 ```
 Kannst du verstehen, welche Anweisungen der Code Schritt für Schritt gibt?
 

@@ -5,7 +5,7 @@
 ## Einführung
 Damit unser Roboter auch "Smart" wird, muss er seine Umgebung wahrnehmen und passend reagieren können. In diesem Teil beschäftigen wir uns mit dem "Wahrnehmen".
 
-## Ultraschall Sensor dazubauen
+## Aufgabe 2.1 Ultraschall Sensor dazubauen
 
 Der Sensor ist auf einem kleinen Servomotor aufgebaut, so dass der Roboter später in verschiedene Richtungen "schauen" kann. Für den Moment interessieren wir uns nur für die Distanz geradeaus.
 

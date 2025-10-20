@@ -9,6 +9,7 @@ Damit unser Roboter auch "Smart" wird, muss er seine Umgebung wahrnehmen und pas
 
 Der Sensor ist auf einem kleinen Servomotor aufgebaut, so dass der Roboter später in verschiedene Richtungen "schauen" kann. Für den Moment interessieren wir uns nur für die Distanz geradeaus.
 
+**Vorgehen**
 1. Setze den Servomotor vorne auf deinen Roboter, so dass der Sensor möglichst geradeaus zeigt. Unterstütze dabei die Plexiglas-Scheibe von unten, dass sie nicht bricht.
 2. Studiere das folgende Schema, und verbinde die Kabel des Servos und des Sensors mit dem Sensor Shield:
     - Der Servo hat drei kombinierte Kabel, diese gehen alle auf Pin 10 (S = Signal, V = + Spannung, G = Grund).

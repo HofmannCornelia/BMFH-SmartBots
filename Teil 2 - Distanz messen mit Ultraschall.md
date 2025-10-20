@@ -15,6 +15,8 @@ Der Sensor ist auf einem kleinen Servomotor aufgebaut, so dass der Roboter spät
     - Der Servo hat drei kombinierte Kabel, diese gehen alle auf Pin 10 (S = Signal, V = + Spannung, G = Grund).
     - Der Ultraschall Sensor benötigt auch Energie (VCC -> V, GND -> G)
     - Plus, der Sensor muss auf Befehl ein Signal aussenden (Trig -> 4 S) und wird danach ein reflektiertes Echo hören (Echo -> 5 S)
+    <img alt="PinSchema" src="https://github.com/user-attachments/assets/fa4d0628-f863-4f53-abb1-09f5ddee4245" style="width:100%; height:auto;"/>
+
 
 3. Teste nun den folgenden Sketch "DistanzMessung":
 ```

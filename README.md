@@ -2,12 +2,11 @@
 Wilkommen zum SmartBots Kurs! 
 Hier findest du alle nötigen Materialien und Informationen.
 
-<img src="https://github.com/user-attachments/assets/1b346462-beb1-49cc-ab60-91691d24b1fa" alt="Beispiel-Bild unserer Roboter" style="width:40%; height:auto;">
-<!--  <img src="https://www.roboter-bausatz.de/media/image/54/74/8d/RBS12948_2.jpg" alt="Beispiel-Bild unserer Roboter" style="width:40%; height:auto;">  -->
+<img src="figures/README_01.jpg" alt="Beispiel-Bild unserer Roboter" style="width:80%; height:auto;">
 
-Wir werden einen Roboter programmieren, der seine Umgebung mit Ultraschall-Sensor erkundet, und dabei Hindernissen ausweichen. 
-Das "Gehirn" des Roboters ist ein Arduino Uno kompatibles Board, ein Mini-Computer. 
-<img src="https://github.com/user-attachments/assets/d30bc181-4193-483d-84af-425f1661ea91" alt="Arduino Uno Board" style="width:40%; height:auto;">
+Wir werden einen Roboter programmieren, der seine Umgebung mit Ultraschall-Sensor erkundet, und dabei Hindernissen selbstständig ausweicht. 
+Das "Gehirn" des Roboters ist ein Arduino Uno kompatibles Board, ein Mini-Computer.  
+<img src="figures/README_02.jpg" alt="Arduino Uno Board" style="width:40%; height:auto;">
 
 
 Von alleine ist dieser Roboter allerdings noch nicht "smart", dafür müssen wir noch einiges Programmieren.
@@ -16,16 +15,16 @@ Von alleine ist dieser Roboter allerdings noch nicht "smart", dafür müssen wir
 
 ### Umgebung einrichten
 - Damit wir unseren Roboter programmieren können, brauchen wir die "**Arduino IDE**"
-Du kannst hier die [Version 2.3.6 herunterladen](https://www.arduino.cc/en/software/) 
+Du kannst hier die [Version 2.3.10 herunterladen](https://www.arduino.cc/en/software/) 
 und dann bei dir installieren.
 
 - Ausserdem brauchen wir noch einen **Treiber**, dass der Laptop mit dem Board kommunizieren kann, und zwar den Chip-Treiber CH241Ser:  
-[für Windows](https://www.roboter-bausatz.de/media/archive/c8/f8/8a/Treiber_CH341SER.zip)
-[für MacOS](https://www.roboter-bausatz.de/media/archive/ec/a7/f0/CH341SER_MAC.zip)
-[für Linux](https://www.roboter-bausatz.de/media/archive/13/f8/02/CH341SER_LINUX.zip)  
+[für Windows](CH341SER_Treiber_2026/CH341SER_WIN.zip) | 
+[für MacOS](CH341SER_Treiber_2026/CH341SER_MAC.zip) | 
+[für Linux](CH341SER_Treiber_2026/CH341SER_LINUX.zip)  
 Auch hier solltest du die passende Treiberversion herunterladen, und das .zip entpacken.
 Für Windows: `Treiber_CH241Ser/CH241Ser/Setup.exe` ausführen.  
-Für MacOS: `CH241Ser/CH34x_Install_V1.5.pkg` ausführen
+Für MacOS: `CH241Ser/CH34x_Install_V1.5.dmg` oder `CH241Ser/CH34x_Install_V1.5.pkg` ausführen, jenachdem, was dein MacOS verlangt (siehe Instructions).
 
 - Danach muss der Laptop **neu gestartet** werden.
 
@@ -36,18 +35,18 @@ Für MacOS: `CH241Ser/CH34x_Install_V1.5.pkg` ausführen
 ## Aufgabe 0.1
 
 Das Arduino Board hat verschiedene wichtige Komponenten:  
-<img alt="ArduinoBoard" src="https://github.com/user-attachments/assets/4defd651-f667-4f65-957b-452a679239af"  style="width:60%; height:auto;">
+<img alt="ArduinoBoard" src="figures/README_03.png"  style="width:60%; height:auto;">
 
 
 Auf dem Arduino Board gibt es eine **L LED**, die für eigene Zwecke eingesetzt werden kann. 
-<img src="https://github.com/user-attachments/assets/c64a4b29-a2f0-4cfe-a4ca-14ab9152f867" alt="Arduino Uno Board" style="width:40%; height:auto;">
+<img src="figures/README_04.jpg" alt="Arduino Uno Board" style="width:40%; height:auto;">
 
 Genau diese LED bringen wir jetzt im von uns gewählten Rhythmus zum Blinken. Die LED ist mit dem digitalen Pin Nummer 13 verbunden. 
 
 Der Arduino arbeitet immer genau ein Programm ab. Solche Programme werden Sketch genannt, manchmal auch Code. 
 
 Du schreibst und änderst einen Sketch auf dem Laptop mit einer Software, die **Arduino IDE** heisst (Integrated Development Environment, integrierte Entwicklungsumgebung). Wir nennen sie einfach IDE.  
-<img alt="ArduinoIDE" src="https://github.com/user-attachments/assets/be4efe4d-afe2-40a0-9c20-a7f2a2862236" style="width:75%; height:auto;" />
+<img alt="ArduinoIDE" src="figures/README_05.png" style="width:75%; height:auto;" />
 
 
 Starte die Arduino IDE, und speichere ein neues Sketch: "Blink".
@@ -85,7 +84,7 @@ Wir werden diesen Code gleich bearbeiten. Verbinde zuerst dein Arduino via USB-K
 Kontrolliere immer, dass dein aktuelles Arduino Board richtig gewählt ist:  
 Im "Board" Dropdown sollte "Arduino Uno" in Fett geschrieben sein, wenn die Verbindung steht. Falls dort nur etwas ähnliches wie `unknown, COM4` steht, kannst du
 - im Dropdown auf `Select other board and port...` klicken
-<img alt="SelectOtherBoardAndPort" src="https://github.com/user-attachments/assets/6a399860-8221-4ac1-812c-411fa8fdbebc" style="width:70%; height:auto;" />
+<img alt="SelectOtherBoardAndPort" src="figures/README_06.png" style="width:70%; height:auto;" />
 
 - rechts unter `PORTS` den für dich gelisteten `COM` Port auswählen
 - danach erst links nach `Arduino Uno` suchen und auswählen
@@ -104,7 +103,7 @@ Von nun an bauen wir den Code für unseren SmartBot Schrit für Schritt auf.
 
 ## ACHTUNG!
 Im nächsten Schritt nehmen wir die Motoren bin Betrieb. Dafür benötigen wir etwas mehr Energie, als wir über USB von Laptops typischerweise kriegen. Darum ist das Batteriefach mit 4 AA Batterien vorbereitet.  
-Der I/O Schalter in der Mitte des SmartBots schaltet die Batterie-Versorgung an oder ab. <img alt="IOschalter" src="https://github.com/user-attachments/assets/6f324481-a463-49ab-9298-2703db5e8b4c"  style="width:5%; height:auto;" />
+Der I/O Schalter in der Mitte des SmartBots schaltet die Batterie-Versorgung an oder ab. <img alt="IOschalter" src="figures/README_07.png"  style="width:5%; height:auto;" />
 
 
 Aber Achtung! Das Board hat viele sensitive Elektronikbauteile. Daher gilt:  

@@ -11,7 +11,7 @@ Um unser Roboter in Schwung zu bringen, benutzen wir 2 Gleichstrom Motoren die m
 > [!WARNING]
 > Vorsicht beim hochheben/umdrehen, das blaue Board an oder Oberseite ist nicht festgemacht.
 
-<img alt="ArduinoBoard" src="https://github.com/user-attachments/assets/586bad59-0197-4562-bc5e-73aed8b9d8bc"  style="width:60%; height:auto;">
+<img alt="ArduinoBoard" src="figures/Teil1_01.jpg"  style="width:60%; height:auto;">
 
 ## Aufgabe 1.1
 

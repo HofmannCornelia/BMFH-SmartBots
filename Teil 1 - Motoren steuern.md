@@ -3,13 +3,13 @@
 > Du lernst, wie du deinen Roboter in Bewegung bringst, und welche Befehle für welche Bewegung nötig sind.
 
 ## Einführung
-Das kleinere blaue Board auf der Oberseite des SmartBots ist ein "Sensor Shield". Das ist quasi eine Verteilzentrale. Viele Pins stehen zur Verfügung, um unterschiedliche Geräte (Motoren, Sensoren, etc) zu verbinden, ohne ein zusätzliches Breadboard zu benötigen. 
+Das kleinere blaue Board auf der Oberseite des SmartBots ist ein "Sensor Shield". Das ist quasi eine Verteilzentrale. Viele Pins stehen zur Verfügung, um unterschiedliche Geräte (Motoren, Sensoren, usw.) zu verbinden, ohne ein zusätzliches Breadboard zu benötigen. 
 
 Das Sensor Shield hat an der Unterseite Pins, welche zum Arduino Board passen.
 
-Um unser Roboter in Schwung zu bringen, benutzen wir 2 Gleichstrom Motoren die mit 3 bis 6V gespeist werden können. Um den Strom zu den Motoren weiterzuleiten und um die Motoren in verschiedene Richtungen zu bewegen, brauchen wir einen Kontroller. Das ist das rote Board an der Unterseite.
+Um unseren Roboter in Schwung zu bringen, benutzen wir zwei Gleichstrommotoren, die mit 3 bis 6 V gespeist werden können. Um den Strom zu den Motoren weiterzuleiten und um die Motoren in verschiedene Richtungen zu bewegen, brauchen wir einen Controller. Das ist das rote Board an der Unterseite.
 > [!WARNING]
-> Vorsicht beim hochheben/umdrehen, das blaue Board an oder Oberseite ist nicht festgemacht.
+> Vorsicht beim Hochheben/Umdrehen: Das blaue Board an der Oberseite ist nicht festgemacht.
 
 <img alt="ArduinoBoard" src="figures/Teil1_01.jpg"  style="width:60%; height:auto;">
 
@@ -19,7 +19,7 @@ Um unser Roboter in Schwung zu bringen, benutzen wir 2 Gleichstrom Motoren die m
 1. Verbinde das Arduino Uno Board mit dem "Sensor Shield". Achte darauf, dass du bei den ersten Pins (Digital 0, Analog A5) beginnst.
 <img alt="ArduinoBoard" src="https://www.electronicajnc.com/web/wp-content/uploads/2023/11/shiel-v5.jpg6_-600x577.jpg"  style="width:50%; height:auto;">
 
-3. Starte ein neuer Sketch und Speichere ihn als "MotorenAnsteuern".
+2. Starte einen neuen Sketch und speichere ihn als "MotorenAnsteuern".
 
 ```
 // Motor 1: welche Seite?
@@ -71,7 +71,7 @@ void loop()
   digitalWrite(in4, HIGH);
   delay(1000);
 
-  digitalWrite(in1, LOW);   // Anschließend sollen die Motoren 2 Sekunden ruhen.
+  digitalWrite(in1, LOW);   // Anschliessend sollen die Motoren 2 Sekunden ruhen.
   digitalWrite(in2, LOW);  
   digitalWrite(in3, LOW);
   digitalWrite(in4, LOW);
@@ -82,13 +82,13 @@ void loop()
 3. Kontrolliere, dass dein aktuelles Arduino Board verbunden und richtig gewählt ist.
 4. Überprüfe deinen Sketch mit der Häkchen-Taste und lade den Code auf das Board hoch.
 5. Trenne die USB-Verbindung, und schalte danach die Batterie-Versorgung an.
-6. Beobachte was mit den Motoren passiert.
+6. Beobachte, was mit den Motoren passiert.
 
 > [!WARNING]
-> Aufpassen dass dein Roboter entweder auf dem Tisch auf den zwei Bechern hochgestellt ist, oder setze ihn auf den Boden. Allerdings fährt er aktuell noch blind dein vorgegebenes Programm ab, und könnte daher in ein Hindernis fahren.
+> Pass auf, dass dein Roboter entweder auf zwei Bechern hochgestellt ist oder auf dem Boden steht. Allerdings fährt er aktuell noch blind dein vorgegebenes Programm ab, und könnte daher in ein Hindernis fahren.
 
 ## Aufgabe 1.2
-Wenn wir kompliziertere Wege fahren, ist es mühsam immer alle 4 Pins einzeln richtig zu setzen. Statdessen definieren wir Funktionen, welche für die verschiedenen Bewegungen die nötigen Befehle auf die Pins zusammenfassen.
+Wenn wir kompliziertere Wege fahren, ist es mühsam, immer alle vier Pins einzeln richtig zu setzen. Stattdessen definieren wir Funktionen, welche für die verschiedenen Bewegungen die nötigen Befehle auf die Pins zusammenfassen.
 
 Studiere dazu den folgenden Sketch "MotorenFunktionen":
 ```
@@ -119,7 +119,7 @@ int in4 = 6;  // Rückwärts
 //  Programms ausgeführt
 //---------------------------------------------
 void setup() {
-  // // Die Motoren-Pins für Output initialisieren.
+  // Die Motoren-Pins für Output initialisieren.
     pinMode(in1, OUTPUT);
     pinMode(in2, OUTPUT); 
     pinMode(in3, OUTPUT);
@@ -233,4 +233,4 @@ Dein Roboter soll jetzt Slalom fahren.
 
 Überprüfe deinen Sketch mit der Häkchen-Taste und lade den Code auf das Board hoch.
 
-Hilfe: geradeaus fährt der Roboter, wenn beide Räder vorwärts drehen. Eine Linksdrehung entsteht, wenn das rechte Rad vorwärts dreht und das linke Rad rückwärts. Umgekehrt für die Rechtsdrehung. 
+Hilfe: Geradeaus fährt der Roboter, wenn beide Räder vorwärts drehen. Eine Linksdrehung entsteht, wenn das rechte Rad vorwärts dreht und das linke Rad rückwärts. Umgekehrt für die Rechtsdrehung. 

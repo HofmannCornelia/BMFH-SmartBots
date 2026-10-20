@@ -1,9 +1,9 @@
 # Teil 3 - alles zusammensetzen
 > [!NOTE]
-> Du lernst, wie dein Roboter zu einem SmartBot wird, und Hindernissen ausweicht.
+> Du lernst, wie dein Roboter zu einem SmartBot wird und Hindernissen ausweicht.
 
 ## Einführung
-Der Roboter soll gerade aus fahren, solange kein Hindernis in der Nähe ist. Bevor er aber in ein Hindernis fährt, soll er stoppen, die freie Distanz nach rechts und links messen, und dann passend reagieren. Das kann bedeuten: 
+Der Roboter soll geradeaus fahren, solange kein Hindernis in der Nähe ist. Bevor er aber in ein Hindernis fährt, soll er stoppen, die freie Distanz nach rechts und links messen, und dann passend reagieren. Das kann bedeuten: 
 - nach rechts oder links drehen, wenn dort mehr freier Platz ist
 - oder rückwärts fahren (wenn keine Seite ideal ist)
 
@@ -11,11 +11,11 @@ Der Roboter soll gerade aus fahren, solange kein Hindernis in der Nähe ist. Bev
 Starte ein neuer Sketch "Erkunden"
 ```
 /**********************************************
-  Distanz in verschiedene Richtungen Erkunden
-  beste Richtung auswählen, und fahren
+  Distanz in verschiedene Richtungen erkunden,
+  die beste Richtung auswählen, und fahren
 **********************************************/
 
-// Servo Motor braucht zusätzlicher Code
+// Servo Motor braucht zusätzlichen Code
 #include <Servo.h>
 
 //---------------------------------------------
@@ -44,9 +44,9 @@ int lookAhead = 0;
 int timeEcho;
 
 // Maximale und minimale Distanz
-const int US_MAX_DISTANZ = 60;
-const int US_MIN_DISTANZ = 2;
-const int US_PULSEIN_TIMEOUT = US_MAX_DISTANZ * 58.2;
+const int MAX_DISTANZ = 60;
+const int MIN_DISTANZ = 2;
+const int PULSEIN_TIMEOUT = MAX_DISTANZ * 58.2;
 
 // Servo Definitionen
 Servo servo;
@@ -65,7 +65,7 @@ void setup() {
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
 
-  // Servo ist an Pins 10 angeschlossen
+  // Servo ist an Pins 10 (S, V und G) angeschlossen
   servo.attach(10);
 
   // Die Sensoren-Pins für Trigger und Echo
@@ -141,7 +141,8 @@ void distanceAhead() {
   // Es wird ein Ultraschall Puls der Länge
   //   10 Mikrosekunden abgesetzt und wieder
   //   empfangen. Damit das Signal klar und sauber
-  //   ist, wird zuerst 5 Mikrosekunden aus sichergestellt,
+  //   ist, wird der Pin zuerst 5 Mikrosekunden lang 
+  //   auf LOW (aus) gesetzt.
   digitalWrite(TRIG, LOW);
   delayMicroseconds(5);
   digitalWrite(TRIG, HIGH);
@@ -154,10 +155,10 @@ void distanceAhead() {
   timeEcho = pulseIn(ECHO, HIGH);
 
   // Dauert es zu lange, bis der Puls zurückkommt, dann ist
-  // dauer=0, sollte aber US_PULSEIN_TIMEOUT sein:
+  // timeEcho<0, sollte aber PULSEIN_TIMEOUT sein:
   if (timeEcho <= 0)
   {
-    timeEcho = US_PULSEIN_TIMEOUT;
+    timeEcho = PULSEIN_TIMEOUT;
   }
 
   // Distanz (cm) mithilfe der Schallgeschwindigkeit berechnen
@@ -174,7 +175,7 @@ void distanceLeft() {
   timeEcho = pulseIn(ECHO, HIGH);
   if (timeEcho <= 0)
   {
-    timeEcho = US_PULSEIN_TIMEOUT;
+    timeEcho = PULSEIN_TIMEOUT;
   }
   lookLeft = timeEcho / 58;
 }
@@ -189,7 +190,7 @@ void distanceRight() {
   timeEcho = pulseIn(ECHO, HIGH);
   if (timeEcho <= 0)
   {
-    timeEcho = US_PULSEIN_TIMEOUT;
+    timeEcho = PULSEIN_TIMEOUT;
   }
   lookRight = timeEcho / 58;
 }
@@ -258,10 +259,10 @@ Verstehst du alle Teile darin?
 ## Aufgabe 3.2 
 **Vorgehen**
 1. Der Aufbau bleibt gleich wie zuvor, wir haben den Servomotor dort auch bereits verbunden.
-3. Kontrolliere wie immer, dass dein aktuelles Arduino Board richtig verbunden und gewählt ist
-4. Überprüfe den Sketch mit der Häkchen-Taste und lade den Code auf den Arduino hoch.
-5. Trenne die USB-Verbindung, lass deinen SmartBot aber noch auf den Bechern hochgestellt, und schalte danach die Batterie-Versorgung an.
-6. Nun kannst du zum Beispiel mit deiner Hand "Hindernisse" vor dem Ultraschall Sensor kreieren, und so überprüfen, ob dein SmartBot tatsächlich so reagiert, wie du erwartest.
-7. Wenn nötig, studiere den Sketch nochmals, und passe ihn eventuell an.
-8. Sobald das Austesten erfolgreich ist, kannst du versuchen, ob das auch frei auf dem Boden wie erhofft klappt, und dein SmartBot den zahlreichen Hindernissen ausweicht.
-9. Eventuell musst du den Sketch nochmals optimieren, für diese Realsituation.
+2. Kontrolliere wie immer, dass dein aktuelles Arduino Board richtig verbunden und gewählt ist
+3. Überprüfe den Sketch mit der Häkchen-Taste und lade den Code auf den Arduino hoch.
+4. Trenne die USB-Verbindung, lass deinen SmartBot aber noch auf den Bechern hochgestellt, und schalte danach die Batterieversorgung an.
+5. Nun kannst du zum Beispiel mit deiner Hand "Hindernisse" vor dem Ultraschall Sensor darstellen, und so überprüfen, ob dein SmartBot tatsächlich so reagiert, wie du erwartest.
+6. Wenn nötig, studiere den Sketch nochmals, und passe ihn eventuell an.
+7. Sobald das Austesten erfolgreich ist, kannst du versuchen, ob das auch frei auf dem Boden wie erhofft klappt, und dein SmartBot den zahlreichen Hindernissen ausweicht.
+8. Eventuell musst du den Sketch für diese Realsituation nochmals optimieren.

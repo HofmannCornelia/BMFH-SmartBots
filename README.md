@@ -22,7 +22,7 @@ und dann bei dir installieren.
 [für Windows](CH341SER_Treiber_2026/CH341SER_WIN.zip) | 
 [für MacOS](CH341SER_Treiber_2026/CH341SER_MAC.ZIP) | 
 [für Linux](CH341SER_Treiber_2026/CH341SER_LINUX.ZIP)  
-Auch hier solltest du die passende Treiberversion herunterladen, und die ZIP-Datei entpacken.
+Auch hier solltest du die passende Treiberversion herunterladen <img src="figures/README_08.png" alt="Download Raw File" style="width:30%; height:auto;">, und die ZIP-Datei entpacken.
 Für Windows: `Treiber_CH341Ser/CH341Ser/Setup.exe` ausführen.  
 Für MacOS: `CH341Ser/CH34x_Install_V1.5.dmg` oder `CH341Ser/CH34x_Install_V1.5.pkg` ausführen, je nachdem, was dein MacOS verlangt (siehe Instructions).
 

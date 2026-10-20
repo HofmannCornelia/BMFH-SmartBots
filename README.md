@@ -20,8 +20,8 @@ und dann bei dir installieren.
 
 - Ausserdem brauchen wir noch einen **Treiber**, damit der Laptop mit dem Board kommunizieren kann, und zwar den Chip-Treiber CH341Ser:  
 [für Windows](CH341SER_Treiber_2026/CH341SER_WIN.zip) | 
-[für MacOS](CH341SER_Treiber_2026/CH341SER_MAC.zip) | 
-[für Linux](CH341SER_Treiber_2026/CH341SER_LINUX.zip)  
+[für MacOS](CH341SER_Treiber_2026/CH341SER_MAC.ZIP) | 
+[für Linux](CH341SER_Treiber_2026/CH341SER_LINUX.ZIP)  
 Auch hier solltest du die passende Treiberversion herunterladen, und die ZIP-Datei entpacken.
 Für Windows: `Treiber_CH341Ser/CH341Ser/Setup.exe` ausführen.  
 Für MacOS: `CH341Ser/CH34x_Install_V1.5.dmg` oder `CH341Ser/CH34x_Install_V1.5.pkg` ausführen, je nachdem, was dein MacOS verlangt (siehe Instructions).
